@@ -22,14 +22,22 @@ template $MainWindow : Adw.ApplicationWindow {
 
     content: ScrolledWindow {
       propagate-natural-height: true;
+      hscrollbar-policy: never;
 
       FlowBox flowbox {
-        orientation: horizontal;
-        row-spacing: 6;
-        column-spacing: 6;
+        activate-on-single-click: true;
+        column-spacing: 12;
+        hexpand: true;
         homogeneous: true;
+        margin-bottom: 12;
+        margin-end: 12;
+        margin-start: 12;
+        // FIXME: Maybe I just don't understand Flowbox or Picture… but this
+        // doesn't seem to work. It always uses the minimum; no more.
         max-children-per-line: 6;
-        min-children-per-line: 3;
+        min-children-per-line: 2;
+        orientation: horizontal;
+        row-spacing: 12;
       }
     };
   }

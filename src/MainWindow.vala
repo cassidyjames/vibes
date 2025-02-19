@@ -20,6 +20,9 @@ public class MainWindow : Adw.ApplicationWindow {
         "photo-1477907961416-f44287c1ef83.jpg"
     };
 
+    private const int THUMB_HEIGHT = 180;
+    private const int THUMB_WIDTH = 320;
+
     public MainWindow (Adw.Application app) {
         Object (
             application: app
@@ -31,11 +34,16 @@ public class MainWindow : Adw.ApplicationWindow {
 
     construct {
         foreach (string wallpaper in WALLPAPERS) {
+
+            // FIXME: Annoyed that this is not seeming to work how I want.
+            // Maybe need to generate a thumbnail of a fixed size? Probably…
             var picture = new Gtk.Picture.for_resource ("/com/cassidyjames/vibes/wallpapers/" + wallpaper) {
-                halign = Gtk.Align.CENTER,
-                valign = Gtk.Align.CENTER,
                 can_shrink = true,
-                content_fit = Gtk.ContentFit.SCALE_DOWN,
+                content_fit = Gtk.ContentFit.COVER,
+                halign = Gtk.Align.CENTER,
+                height_request = THUMB_HEIGHT,
+                valign = Gtk.Align.CENTER,
+                width_request = THUMB_WIDTH,
             };
 
             flowbox.append (picture);

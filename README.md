@@ -18,6 +18,9 @@ Since those were wrote 5–10 years ago, the current parameters are:
 
 Roughly, I see the app working like:
 
+![Light](data/screenshots/light.png#gh-light-mode-only)
+![Dark](data/screenshots/dark.png#gh-dark-mode-only)
+
 1. Show a grid of wallpapers; if they support light/dark style, preview them halvsies similar to GNOME
 2. Selecting a wallpaper throws the FreeDesktop portal to set it
 3. Maybe have an “Install All” option to get them to all show up in Settings?
