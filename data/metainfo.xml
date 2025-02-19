@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2025 Cassidy James Blaede <c@ssidyjam.es> -->
+<component type="desktop">
+  <name>Vibes</name>
+  <summary>Curated wallpapers</summary>
+  <developer_name translatable="no">Cassidy James Blaede</developer_name>
+  <developer id="com.cassidyjames">
+    <name translatable="no">Cassidy James Blaede</name>
+  </developer>
+  <description>
+    <p>Pick a nice wallpaper from a small selection of good choices.</p>
+  </description>
+  <id>com.cassidyjames.vibes</id>
+  <launchable type="desktop-id">com.cassidyjames.vibes.desktop</launchable>
+  <provides>
+    <binary>com.cassidyjames.vibes</binary>
+  </provides>
+  <translation type="gettext">com.cassidyjames.vibes</translation>
+  <metadata_license>CC0</metadata_license>
+  <project_license>GPL-3.0</project_license>
+  <content_rating type="oars-1.1"></content_rating>
+  <url type="homepage">https://cassidyjames.com/apps</url>
+  <url type="bugtracker">https://github.com/cassidyjames/vibes/issues</url>
+  <url type="donation">https://cassidyjames.com/pay</url>
+  <url type="help">https://cassidyjames.com/support</url>
+  <releases>
+    <release version="0.0.0" date="2025-02-18" />
+  </releases>
+</component>
