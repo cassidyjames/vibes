@@ -1,0 +1,36 @@
+/*
+ * SPDX-License-Identifier: GPL-3.0
+ * SPDX-FileCopyrightText: 2025 Cassidy James Blaede <c@ssidyjam.es>
+ */
+
+using Gtk 4.0;
+using Adw 1;
+
+template $MainWindow : Adw.ApplicationWindow {
+  icon-name: "com.cassidyjames.vibes";
+  title: "Vibes";
+  width-request: 360;
+  height-request: 360;
+  default-width: 768;
+  default-height: 512;
+
+  Adw.ToolbarView {
+    [top]
+    Adw.HeaderBar {
+      show-title: true;
+    }
+
+    content: ScrolledWindow {
+      propagate-natural-height: true;
+
+      FlowBox flowbox {
+        orientation: horizontal;
+        row-spacing: 6;
+        column-spacing: 6;
+        homogeneous: true;
+        max-children-per-line: 6;
+        min-children-per-line: 3;
+      }
+    };
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "app-id": "com.cassidyjames.vibes",
+  "runtime" : "org.gnome.Platform",
+  "runtime-version": "47",
+  "sdk": "org.gnome.Sdk",
+  "command": "com.cassidyjames.vibes",
+  "finish-args": [
+    "--device=dri",
+    "--share=ipc",
+    "--socket=wayland",
+    "--socket=fallback-x11"
+  ],
+  "modules": [
+    {
+      "name": "blueprint-compiler",
+      "buildsystem": "meson",
+      "cleanup": ["*"],
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.gnome.org/jwestman/blueprint-compiler",
+          "tag": "v0.16.0"
+        }
+      ]
+    },
+    {
+      "name": "vibes",
+      "buildsystem": "meson",
+      "sources": [
+        {
+          "type": "dir",
+          "path": "."
+        }
+      ]
+    }
+  ]
+}

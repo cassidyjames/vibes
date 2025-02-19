@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Vibes
+Comment=Curated wallpapers
+Categories=Graphics;Settings;Utility;GTK;GNOME;
+Exec=com.cassidyjames.vibes
+Icon=com.cassidyjames.vibes
+Terminal=false
+Type=Application
+Keywords=wallpaper;background;backdrop;picture;bg;variety;dynamic;
