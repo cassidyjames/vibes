@@ -5,8 +5,6 @@
 
 [GtkTemplate (ui = "/com/cassidyjames/vibes/ui/main.ui")]
 public class MainWindow : Adw.ApplicationWindow {
-    // FIXME: Obvs this is terrible; consider ALL of this code a throw-away
-    // proof of concept to play with the UI :)
     private const string RESOURCE_ROOT = "/com/cassidyjames/vibes/wallpapers/";
 
     private const int THUMB_HEIGHT = 180;
