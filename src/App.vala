@@ -33,8 +33,8 @@ public class Vibes.App : Adw.Application {
         }, this);
 
         set_accels_for_action ("app.quit", {
-            "<primary>q",
-            "<primary>w"
+            "<Control>q",
+            "<Control>w"
         });
     }
 
