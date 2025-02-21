@@ -42,12 +42,15 @@ public class Vibes.App : Adw.Application {
         GLib.SourceFunc callback = load_pictures_async.callback;
         new GLib.Thread<void> ("load-pictures", () => {
             try {
-                foreach (string wallpaper in GLib.resources_enumerate_children (RESOURCE_ROOT, GLib.ResourceLookupFlags.NONE)) {
-                    main_window.add_picture (RESOURCE_ROOT + wallpaper);
+                GLib.File wallpapers_dir = GLib.File.new_for_path (WALLPAPERS_DIR);
+                GLib.FileEnumerator file_enumerator = wallpapers_dir.enumerate_children ("standard::*", GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null);
+                GLib.FileInfo? file_info = null;
+                while ((file_info = file_enumerator.next_file ()) != null) {
+                    GLib.File wallpaper = GLib.File.new_build_filename (wallpapers_dir.get_path (), file_info.get_name ());
+                    main_window.add_picture (wallpaper.get_path ());
                 }
             } catch (GLib.Error e) {
-                // TODO: Properly handle this
-                warning (e.message);
+                warning ("Failed to enumerate wallpaper files: %s", e.message);
             }
             Idle.add ((owned) callback);
         });
