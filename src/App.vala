@@ -4,6 +4,11 @@
  */
 
 public class Vibes.App : Adw.Application {
+
+    private const string RESOURCE_ROOT = "/com/cassidyjames/vibes/wallpapers/";
+
+    private MainWindow main_window;
+
     public App () {
         Object (
             application_id: APP_ID,
@@ -12,22 +17,41 @@ public class Vibes.App : Adw.Application {
     }
 
     protected override void activate () {
-        var main_window = new MainWindow (this);
+        main_window = new MainWindow (this);
         main_window.show ();
 
-        var quit_action = new SimpleAction ("quit", null);
+        load_pictures_async.begin ((obj, res) => {
+            load_pictures_async.end (res);
+        });
+    }
 
-        add_action (quit_action);
+    protected override void startup () {
+        base.startup ();
+
+        add_action_entries ({
+            { "quit", quit }
+        }, this);
+
         set_accels_for_action ("app.quit", {
-            "<Ctrl>Q",
-            "<Ctrl>W",
+            "<primary>q",
+            "<primary>w"
         });
+    }
 
-        quit_action.activate.connect (() => {
-            if (main_window != null) {
-                main_window.destroy ();
+    private async void load_pictures_async () {
+        GLib.SourceFunc callback = load_pictures_async.callback;
+        new GLib.Thread<void> ("load-pictures", () => {
+            try {
+                foreach (string wallpaper in GLib.resources_enumerate_children (RESOURCE_ROOT, GLib.ResourceLookupFlags.NONE)) {
+                    main_window.add_picture (RESOURCE_ROOT + wallpaper);
+                }
+            } catch (GLib.Error e) {
+                // TODO: Properly handle this
+                warning (e.message);
             }
+            Idle.add ((owned) callback);
         });
+        yield;
     }
 
     private static int main (string[] args) {
