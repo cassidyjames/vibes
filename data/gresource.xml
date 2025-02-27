@@ -2,15 +2,5 @@
 <gresources>
   <gresource prefix="/com/cassidyjames/vibes/">
     <file preprocess="xml-stripblanks">ui/main.ui</file>
-    <file>wallpapers/photo-1464491965784-a12f0f70642b.jpg</file>
-    <file>wallpapers/photo-1470209595850-551a2d564b09.jpg</file>
-    <file>wallpapers/photo-1470698416516-70c8af45a6b6.jpg</file>
-    <file>wallpapers/photo-1474971947157-c74e142a326c.jpg</file>
-    <file>wallpapers/photo-1475724017904-b712052c192a.jpg</file>
-    <file>wallpapers/photo-1475817712127-ef4cd1556aff.jpg</file>
-    <file>wallpapers/photo-1476390290743-c2eefe11aa35.jpg</file>
-    <file>wallpapers/photo-1477322524744-0eece9e79640.jpg</file>
-    <file>wallpapers/photo-1477570919400-3daf71ede383.jpg</file>
-    <file>wallpapers/photo-1477907961416-f44287c1ef83.jpg</file>
   </gresource>
 </gresources>

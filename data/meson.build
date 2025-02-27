@@ -49,3 +49,9 @@ if desktop_file_validate.found()
     args: meson.current_build_dir () / project_name + '.desktop'
   )
 endif
+
+install_subdir(
+  'wallpapers',
+  install_dir: wallpapers_dir,
+  strip_directory: true
+)

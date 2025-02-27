@@ -19,14 +19,24 @@ public class MainWindow : Adw.ApplicationWindow {
     unowned Gtk.FlowBox flowbox;
 
     construct {
-        
+        flowbox.child_activated.connect ((child) => {
+            GLib.File? file = ((Gtk.Picture) child.child).get_file ();
+            var portal = new Xdp.Portal.initable_new ();
+            portal.set_wallpaper.begin (Xdp.parent_new_gtk (this), file.get_uri (), Xdp.WallpaperFlags.BACKGROUND, null, (obj, res) => {
+                try {
+                    portal.set_wallpaper.end (res);
+                } catch (GLib.Error e) {
+                    warning ("Failed to set wallpaper: %s", e.message);
+                }
+            });
+        });
     }
 
-    public void add_picture (string resource_path) {
+    public void add_picture (string file_path) {
         Idle.add (() => {
             // FIXME: Annoyed that this is not seeming to work how I want.
             // Maybe need to generate a thumbnail of a fixed size? Probably…
-            var picture = new Gtk.Picture.for_resource (resource_path) {
+            var picture = new Gtk.Picture.for_filename (file_path) {
                 can_shrink = true,
                 content_fit = Gtk.ContentFit.COVER,
                 halign = Gtk.Align.CENTER,
@@ -39,4 +49,5 @@ public class MainWindow : Adw.ApplicationWindow {
             return false;
         }, GLib.Priority.DEFAULT);
     }
+
 }
